@@ -95,16 +95,6 @@ cuda_lib_test.cu (**addWithCuda()**)
 		*error_message = "cudaMemcpy failed!";
         goto Error;
     }
-
-    // Launch a kernel on the GPU with one thread for each element.
-    addKernel <<<1, size>>>(dev_c, dev_a, dev_b);
-
-    // Check for any errors launching the kernel
-    cudaStatus = cudaGetLastError();
-    if (cudaStatus != cudaSuccess) {
-		*error_message = "addKernel launch failed: " + std::string(cudaGetErrorString(cudaStatus));
-        goto Error;
-    }
 ```
 ### 透過 GPU 執行運算
 ```cpp
