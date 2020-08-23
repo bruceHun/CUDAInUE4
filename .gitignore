@@ -9,7 +9,7 @@ package
 *.opensdf
 *.opendb
 *.sdf
-*.sln
+CUDATest/*.sln
 *.suo
 *.xcodeproj
 *.xcworkspace
