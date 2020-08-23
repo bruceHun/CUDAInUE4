@@ -16,25 +16,6 @@
 
 ## 自訂函示庫 (cuda_lib/)
 
-### 連結函示庫
-CUDATest.Build.cs
-```C#
-    string custom_cuda_lib_include = "CUDALib/include";
-    string custom_cuda_lib_lib = "CUDALib/lib";
-
-    PublicIncludePaths.Add(Path.Combine(poject_root_path, custom_cuda_lib_include));
-    PublicAdditionalLibraries.Add(Path.Combine(poject_root_path, custom_cuda_lib_lib, "cuda_lib.lib"));
-
-    string cuda_path = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.2/";
-    string cuda_include = "include";
-    string cuda_lib = "lib/x64";
-
-    PublicIncludePaths.Add(Path.Combine(cuda_path, cuda_include));
-
-    //PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "cudart.lib"));
-    PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "cudart_static.lib"));
-```
-
 ### 使用 cuda_lib 定義所需的函式:
 
 cuda_lib_test.h
@@ -103,6 +84,26 @@ cuda_lib_test.cu (**addWithCuda()**)
 ```
 
 ## UE4 測試專案 (CUDATest/)
+
+### 連結函示庫
+CUDATest.Build.cs
+```C#
+    string custom_cuda_lib_include = "CUDALib/include";
+    string custom_cuda_lib_lib = "CUDALib/lib";
+
+    PublicIncludePaths.Add(Path.Combine(poject_root_path, custom_cuda_lib_include));
+    PublicAdditionalLibraries.Add(Path.Combine(poject_root_path, custom_cuda_lib_lib, "cuda_lib.lib"));
+
+    string cuda_path = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.2/";
+    string cuda_include = "include";
+    string cuda_lib = "lib/x64";
+
+    PublicIncludePaths.Add(Path.Combine(cuda_path, cuda_include));
+
+    //PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "cudart.lib"));
+    PublicAdditionalLibraries.Add(Path.Combine(cuda_path, cuda_lib, "cudart_static.lib"));
+```
+
 ### 在 C++ class 中定義函式
 CUDA_Test.h
 ```cpp
